@@ -1,0 +1,36 @@
+<div class="create-container">
+  <h2>Cadastrar Novo Benefício 📝</h2>
+
+  <div class="form-card">
+    <div class="form-group">
+      <label>Nome do Benefício</label>
+      <input type="text" [(ngModel)]="novoBeneficio.nome" placeholder="Ex: Vale Refeição" name="nome">
+    </div>
+
+    <div class="form-group">
+      <label>Descrição</label>
+      <textarea [(ngModel)]="novoBeneficio.descricao" placeholder="Descreva a finalidade..." name="descricao"></textarea>
+    </div>
+
+    <div class="form-group">
+      <label>Saldo Inicial (R$)</label>
+      <input type="number" [(ngModel)]="novoBeneficio.valor" placeholder="0.00" name="valor">
+    </div>
+
+    <div class="form-group checkbox">
+      <input type="checkbox" [(ngModel)]="novoBeneficio.ativo" id="ativo" name="ativo">
+      <label for="ativo">Benefício Ativo</label>
+    </div>
+
+   <div *ngIf="mensagem" [ngClass]="{'msg-sucesso': tipoMensagem === 'sucesso', 'msg-erro': tipoMensagem === 'erro'}">
+      {{ mensagem }}
+    </div>
+
+    <div class="actions">
+      <button class="btn-voltar" routerLink="/beneficios">Voltar</button>
+      <button class="btn-salvar" (click)="salvar()" [disabled]="processando">
+        {{ processando ? 'Salvando...' : 'Salvar Benefício' }}
+      </button>
+    </div>
+  </div>
+</div>
